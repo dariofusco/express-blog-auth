@@ -6,11 +6,14 @@ const postsRouter = require("./routers/posts.js");
 
 app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 app.use('/', postsRouter);
 
 app.use('/:slug', postsRouter);
+
+app.use('/login', postsRouter);
 
 app.use('/create', postsRouter);
 
