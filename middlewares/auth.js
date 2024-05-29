@@ -23,7 +23,17 @@ const authenticateWithJwt = (req, res, next) => {
     });
 }
 
+const isAdmin = (req, res, next) => {
+    const { username, password } = req.user;
+    const user = users.find(u => u.username === username && u.password === password);
+    if (!user || !user.admin) {
+        return res.status(403).send('Non sei autorizzato, devi essere admin');
+    }
+    next();
+}
+
 module.exports = {
     generateToken,
     authenticateWithJwt,
+    isAdmin,
 }
