@@ -10,7 +10,7 @@ const uploader = multer({ dest: "public" });
 
 router.get("/", postsControllers.index);
 
-router.post("/create", (auth.authenticateWithJwt), uploader.single("image"), postsControllers.create);
+router.post("/create", (auth.authenticateWithJwt), (auth.isAdmin), uploader.single("image"), postsControllers.create);
 
 router.get("/:slug", postsControllers.show);
 

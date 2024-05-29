@@ -1,9 +1,9 @@
+const users = require('../db/users.json');
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 // Creo funzione che genera il token
 const generateToken = user => jwt.sign(user, process.env.JWT_SECRET, { expiresIn: "1m" });
-
 
 const authenticateWithJwt = (req, res, next) => {
     const { authorization } = req.headers;
