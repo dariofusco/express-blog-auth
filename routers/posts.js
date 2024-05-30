@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const postsControllers = require("../controllers/posts.js");
-const authControllers = require("../controllers/auth.js");
+const usersControllers = require("../controllers/users.js");
 const auth = require("../middlewares/auth.js");
 
 const multer = require("multer");
@@ -18,7 +18,7 @@ router.get("/:slug/download", postsControllers.download);
 
 router.delete("/:slug", postsControllers.destroy);
 
-router.post('/login', authControllers.login);
+router.post('/login', usersControllers.login);
 
 
 module.exports = router;
